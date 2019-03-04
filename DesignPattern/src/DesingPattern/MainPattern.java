@@ -52,11 +52,26 @@ public class MainPattern {
 //		Point p = Factory.newCartesian(1, 2);
 //		System.out.println(p);
 		
-		NewPerson ravi = new NewPerson("ravi", 22);
-		NewPerson teja = SerializationUtils.roundtrip(ravi);
-		teja.name = "teja";
-		System.out.println(ravi);
-		System.out.println(teja);
+//		NewPerson ravi = new NewPerson("ravi", 22);
+//		NewPerson teja = SerializationUtils.roundtrip(ravi);
+//		teja.name = "teja";
+//		System.out.println(ravi);
+//		System.out.println(teja);
+		
+		BasicSingleton singleton = BasicSingleton.getInstance();
+	    singleton.setValue(111);
+
+	    String filename = "/Users/teju/Documents/DesignPatterns-JAVA/DesignPattern/src/DesignPrinciples/singleton.bin";
+	    Sample.saveToFile(singleton, filename);
+
+	    singleton.setValue(222);
+
+	    BasicSingleton singleton2 = Sample.readFromFile(filename);
+
+	    System.out.println(singleton == singleton2);
+
+	    System.out.println(singleton.getValue());
+	    System.out.println(singleton2.getValue());
 		
 	}
 
